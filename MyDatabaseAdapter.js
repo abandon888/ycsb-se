@@ -39,26 +39,4 @@ class MongoDBAdapter extends DatabaseAdapter {
     }
 }
 
-// (async () => {
-//     const client = new MongoClient('your-mongodb-connection-string')
-//     try {
-//         await client.connect()
-//         const db = client.db('your-database-name')
-//         const adapter = new MongoDBAdapter(db, 'your-collection-name')
-
-//         // 以下是如何使用适配器的示例
-//         await adapter.write('key1', { field: 'value1' })
-//         console.log('Written key1')
-
-//         const value = await adapter.read('key1')
-//         console.log('Read key1:', value)
-
-//         await adapter.update('key1', { field: 'updatedValue' })
-//         console.log('Updated key1')
-
-//         // ... 更多操作 ...
-//     } finally {
-//         await client.close()
-//     }
-// })()
 export { DatabaseAdapter, MongoDBAdapter as MyDatabaseAdapter }
