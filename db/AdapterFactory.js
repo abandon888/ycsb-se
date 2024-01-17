@@ -1,7 +1,7 @@
-import DatabaseAdapter from './DatabaseAdapter'
-import MongoDBAdapter from './MongoDBAdapter'
-import RedisAdapter from './RedisAdapter'
-import CassandraAdapter from './CassandraAdapter'
+const DatabaseAdapter = require('./DatabaseAdapter')
+const MongoDBAdapter = require('./mongodb/MongoDBAdapter')
+const RedisAdapter = require('./redis/RedisAdapter')
+const CassandraAdapter = require('./cassandra/CassandraAdapter')
 
 /**
  * 根据数据库类型创建并返回相应的数据库适配器实例。

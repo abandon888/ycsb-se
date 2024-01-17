@@ -1,6 +1,6 @@
 // createDatabaseAdapter.js
-import { MongoClient } from 'mongodb'
-import { MyDatabaseAdapter } from './MyDatabaseAdapter'
+const { MongoClient } = require('mongodb')
+const { MyDatabaseAdapter } = require('./MyDatabaseAdapter')
 
 /**
  * 根据传入的数据库类型，从conf.json中读取数据库配置，并返回

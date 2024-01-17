@@ -1,4 +1,4 @@
-import DatabaseAdapter from './DatabaseAdapter'
+const DatabaseAdapter = require('../DatabaseAdapter')
 
 // MongoDB 数据库适配器实现
 class MongoDBAdapter extends DatabaseAdapter {

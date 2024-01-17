@@ -1,4 +1,5 @@
-import DatabaseAdapter from './DatabaseAdapter'
+const cassandra = require('cassandra-driver')
+const DatabaseAdapter = require('../DatabaseAdapter')
 
 class CassandraAdapter extends DatabaseAdapter {
   constructor(client, keyspace, table) {

@@ -1,4 +1,4 @@
-import DatabaseAdapter from './DatabaseAdapter'
+const DatabaseAdapter = require('../DatabaseAdapter')
 
 class RedisAdapter extends DatabaseAdapter {
   constructor(client) {

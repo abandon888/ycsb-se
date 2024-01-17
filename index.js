@@ -1,7 +1,7 @@
-import { createDatabaseAdapter } from './createDatabaseAdapter'
-import { WorkloadGenerator } from './WorkloadGenerator'
-import { PerformanceEvaluator } from './PerformanceEvaluator'
-import { Workloads } from './Workloads'
+const createDatabaseAdapter = require('./createDatabaseAdapter')
+const WorkloadGenerator = require('./WorkloadGenerator')
+const PerformanceEvaluator = require('./PerformanceEvaluator')
+const Workloads = require('./Workloads')
 
 /**
  * 云函数入口函数
