@@ -1,0 +1,5 @@
+{
+  "MONGO_URI": "您的MongoDB连接字符串",
+  "DB_NAME": "数据库名",
+  "COLLECTION_NAME": "集合名"
+}
