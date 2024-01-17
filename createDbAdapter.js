@@ -3,20 +3,33 @@ const { MongoClient } = require('mongodb')
 const { MyDatabaseAdapter } = require('./MyDatabaseAdapter')
 
 /**
- * 根据传入的数据库类型，从conf.json中读取数据库配置，并返回
+ * 根据传入的数据库类型，从环境变量中读取数据库配置，并返回
  * @param dbType 数据库类型
  * @returns dbConfig 数据库配置
  */
 function getDbConfig (dbType) {
-  const conf = require('../conf.json')
-  const dbConfig = conf[dbType]
+  let dbConfig
 
-  if (!dbConfig) {
-    throw new Error(`Unsupported database type: ${dbType}`)
+  switch (dbType) {
+    case 'mongodb':
+      dbConfig = {
+        uri: process.env.MONGODB_URI,
+        dbName: process.env.MONGODB_DB_NAME,
+        collectionName: process.env.MONGODB_COLLECTION_NAME,
+      }
+      break
+    // 其他数据库类型的环境变量配置
+    default:
+      throw new Error(`Unsupported database type: ${dbType}`)
+  }
+
+  if (!dbConfig.uri) {
+    throw new Error(`Database configuration for ${dbType} is not properly set in environment variables.`)
   }
 
   return dbConfig
 }
+
 
 async function createDatabaseAdapter (event) {
   const { dbType } = event
