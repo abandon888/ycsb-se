@@ -12,6 +12,5 @@ export const Workloads = {
     writePercentage: 5,
     totalOperations: 100
   },
-  // 其他工作负载可以在此定义
-  // ...
+
 }
