@@ -1,5 +1,15 @@
 {
-  "MONGO_URI": "您的MongoDB连接字符串",
-  "DB_NAME": "数据库名",
-  "COLLECTION_NAME": "集合名"
+  "mongodb": {
+    "URL": "您的MongoDB连接字符串",
+    "DB_NAME": "数据库名",
+    "COLLECTION_NAME": "集合名"
+  },
+  "redis": {
+    "URL": "您的Redis连接字符串"
+  },
+  "cassandra": {
+    "URL": "您的Cassandra连接字符串",
+    "KEYSPACE": "keyspace名",
+    "TABLE": "表名"
+  }
 }
