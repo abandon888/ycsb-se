@@ -23,7 +23,7 @@ async function main (events, context, callback) {
         const evaluator = new PerformanceEvaluator()
 
         evaluator.startTest()
-        await generator.generateLoad()
+        await generator.generateLoad(evaluator) // 传递 evaluator 实例
         evaluator.endTest()
 
         const report = evaluator.getPerformanceReport()
