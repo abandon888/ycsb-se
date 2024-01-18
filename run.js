@@ -33,7 +33,7 @@ function escapeSpecialCharacters (password) {
   // Replace each special character with its escape sequence
   return password.split('').map(char => escapeDict[char] || char).join('')
 }
-const newpassword = escapeSpecialCharacters("gxq4UZF*pwz3gyu@jmg")
+const newpassword = escapeSpecialCharacters("")//自行填写密码
 const url = `mongodb://root:${newpassword}@dds-bp13f170d6cf5ee41543-pub.mongodb.rds.aliyuncs.com:3717,dds-bp13f170d6cf5ee42238-pub.mongodb.rds.aliyuncs.com:3717/admin?replicaSet=mgset-74865747`
 console.info("url:", url)
 
