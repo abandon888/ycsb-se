@@ -1,11 +1,11 @@
 <h1>YCSB-SE</h1>
 
-**A benchmark tool adapted to Serverless computing workflows.**
+**适用于无服务器计算工作流的基准测试工具。**
 
 <p align="center">
-  <a href="#overview">Overview</a> • <a href="#documentation">Documentation</a>
+  <a href="#overview">总览</a> • <a href="#documentation">文档</a>
   <!-- • <a href="#install">Installation</a> • <a href="#usage">Usage</a> • <a href="#performance">Performance</a>  -->
-  • <a href="./README-ZH.md" target="_blank">简体中文</a>
+  • <a href="./README.md" target="_blank">English</a>
 <br>
 </p>
 
@@ -37,33 +37,32 @@
 
 <div id="overview"></div>
 
-## Overview
+## 总览
 
-**YCSB-SE** is a benchmark tool adapted to Serverless computing workflows. It is based on [YCSB](https://github.com/brianfrankcooper/YCSB), a popular benchmark tool for cloud databases.
+**Ycsb-se** 是适用于无服务器计算工作流的基准工具。它基于 [YCSB](https://github.com/brianfrankcooper/YCSB)，这是一种流行的云数据库基准测试工具。
 
-The whole project is written in Node.js for easy deployment on different cloud platforms.
+项目整体使用 Node.js 编写，以便于在不同的云平台上部署。
 
-YCSB-SE is designed to evaluate the performance of Serverless computing workflows, which are composed of multiple functions. YCSB-SE can be used to evaluate the performance of Serverless computing workflows in terms of latency, throughput, and cost.
+Ycsb-se 旨在评估无服务器计算工作流的性能，这些工作流由多个功能组成。Ycsb-se 可用于评估无服务器计算工作流在延迟、吞吐量和成本方面的性能。
 
 <div id="documentation"></div>
 
 ## Documentation
 
-Note: The documentation is still under construction.
-
-The cloud functions currently supported by the project are:
+注意：文档仍在建设中。
+项目目前已支持的云函数有：
 
 - [ ] [AWS Lambda](https://aws.amazon.com/lambda/)
 - [ ] [Azure Functions](https://azure.microsoft.com/en-us/services/functions/)
 - [x] [alibaba Cloud Function Compute](https://www.alibabacloud.com/product/function-compute)
 
-The databases currently supported by the project are:
+项目目前已支持的数据库有：
 
 - [x] [MongoDB](https://www.mongodb.com/)
 - [x] [Redis](https://redis.io/)
 - [x] [Cassandra](https://cassandra.apache.org/)
 
-### Call method
+### 调用方法
 
 ```json
 {
@@ -72,7 +71,7 @@ The databases currently supported by the project are:
 }
 ```
 
-### Return Results
+### 返回结果
 
 ```json
 {
@@ -90,4 +89,4 @@ The databases currently supported by the project are:
 }
 ```
 
-> Cold start performance data is inconvenient to monitor, so N/A is returned. Can be combined with cloud platform monitoring data for analysis.
+> 冷启动性能数据不便监测，因此返回 N/A。可结合云平台监控数据进行分析。
