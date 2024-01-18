@@ -1,5 +1,5 @@
 // Workloads.ts
-export const Workloads = {
+const Workloads = {
   // Workload A: 50% 读，50% 更新
   A: {
     readPercentage: 50,
@@ -14,3 +14,5 @@ export const Workloads = {
   },
 
 }
+
+module.exports = Workloads

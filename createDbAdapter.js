@@ -60,4 +60,4 @@ async function createDatabaseAdapter (event) {
   }
 }
 
-export { createDatabaseAdapter }
+module.exports = createDatabaseAdapter

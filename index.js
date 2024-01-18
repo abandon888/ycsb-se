@@ -12,9 +12,9 @@ const Workloads = require('./workloadconf')
  */
 async function main (event, context) {
     const functionStartTime = Date.now()
-
+    const { adapter, dbConnectionTime, closeConnection } = await createDatabaseAdapter(event)
     try {
-        const { adapter, dbConnectionTime, closeConnection } = await createDatabaseAdapter(event)
+
         const workloadConfig = Workloads[event.workloadType] || Workloads.A
 
         const generator = new WorkloadGenerator(workloadConfig, adapter)
