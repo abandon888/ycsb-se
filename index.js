@@ -1,7 +1,7 @@
 const createDatabaseAdapter = require('./createDbAdapter')
-const WorkloadGenerator = require('./WorkloadGenerator')
-const PerformanceEvaluator = require('./PerformanceEvaluator')
-const Workloads = require('./Workloads')
+const WorkloadGenerator = require('./workloadGen')
+const PerformanceEvaluator = require('./performance')
+const Workloads = require('./workloadconf')
 
 /**
  * 云函数入口函数
