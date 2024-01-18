@@ -11,33 +11,37 @@ const Workloads = require('./workloadconf')
  * @returns {Promise<{coldStartDuration: string, dbConnectionTime: string, totalFunctionExecutionTime: string, performanceReport: *}>}
  */
 async function main (events, context, callback) {
+    // 使用 process.hrtime.bigint() 获取高精度的时间戳
+    const functionStartHrTime = process.hrtime.bigint()
+
     let event = JSON.parse(events.toString())
     console.log(event)
-    const functionStartTime = Date.now()
+
     const { adapter, dbConnectionTime, closeConnection } = await createDatabaseAdapter(event)
+
     try {
-
         const workloadConfig = Workloads[event.workloadType] || Workloads.A
-
         const generator = new WorkloadGenerator(workloadConfig, adapter)
         const evaluator = new PerformanceEvaluator()
 
         evaluator.startTest()
-        await generator.generateLoad(evaluator) // 传递 evaluator 实例
+        await generator.generateLoad(evaluator)
         evaluator.endTest()
 
         const report = evaluator.getPerformanceReport()
 
-        const functionEndTime = Date.now()
-        const totalFunctionExecutionTime = functionEndTime - functionStartTime
+        const functionEndHrTime = process.hrtime.bigint()
+        const totalFunctionExecutionHrTime = functionEndHrTime - functionStartHrTime
 
-        callback(null,
-            {
-                coldStartDuration: `${functionStartTime - context.initialStartTime}ms`,
-                dbConnectionTime: `${dbConnectionTime}ms`,
-                totalFunctionExecutionTime: `${totalFunctionExecutionTime}ms`,
-                performanceReport: report
-            })
+        // 转换为毫秒
+        const totalFunctionExecutionTime = (totalFunctionExecutionHrTime / BigInt(1000000)).toString()
+
+        callback(null, {
+            coldStartDuration: 'N/A', // 由于无法精确获取，标记为不适用
+            dbConnectionTime: `${dbConnectionTime}ms`,
+            totalFunctionExecutionTime: `${totalFunctionExecutionTime}ms`,
+            performanceReport: report
+        })
 
     } catch (error) {
         console.error('Error during database operation:', error)
