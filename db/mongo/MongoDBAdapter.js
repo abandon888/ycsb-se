@@ -24,4 +24,4 @@ class MongoDBAdapter extends DatabaseAdapter {
   }
 }
 
-export default MongoDBAdapter
+module.exports = MongoDBAdapter

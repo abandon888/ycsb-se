@@ -25,4 +25,4 @@ class CassandraAdapter extends DatabaseAdapter {
   }
 }
 
-export default CassandraAdapter
+module.exports = CassandraAdapter

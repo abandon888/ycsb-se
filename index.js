@@ -1,4 +1,4 @@
-const createDatabaseAdapter = require('./createDatabaseAdapter')
+const createDatabaseAdapter = require('./createDbAdapter')
 const WorkloadGenerator = require('./WorkloadGenerator')
 const PerformanceEvaluator = require('./PerformanceEvaluator')
 const Workloads = require('./Workloads')
@@ -10,7 +10,7 @@ const Workloads = require('./Workloads')
  *  - event.workloadType 负载类型
  * @returns {Promise<{coldStartDuration: string, dbConnectionTime: string, totalFunctionExecutionTime: string, performanceReport: *}>}
  */
-export async function main (event, context) {
+async function main (event, context) {
     const functionStartTime = Date.now()
 
     try {
@@ -42,3 +42,5 @@ export async function main (event, context) {
         await closeConnection()
     }
 }
+
+exports.main = main

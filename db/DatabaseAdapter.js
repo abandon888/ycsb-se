@@ -13,4 +13,4 @@ class DatabaseAdapter {
     }
 }
 
-export default DatabaseAdapter
+module.exports = DatabaseAdapter

@@ -1,7 +1,4 @@
-// Import the MongoDBAdapter as DatabaseAdapter
-const DatabaseAdapter = require('./MyDatabaseAdapter')
-
-// WorkloadConfig interface
+// Description: Workload generator module.
 /**
  * @typedef {Object} WorkloadConfig
  * @property {number} readPercentage - Read percentage.

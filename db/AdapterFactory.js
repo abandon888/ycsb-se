@@ -1,5 +1,5 @@
 const DatabaseAdapter = require('./DatabaseAdapter')
-const MongoDBAdapter = require('./mongodb/MongoDBAdapter')
+const MongoDBAdapter = require('./mongo/MongoDBAdapter')
 const RedisAdapter = require('./redis/RedisAdapter')
 const CassandraAdapter = require('./cassandra/CassandraAdapter')
 
@@ -24,7 +24,7 @@ const CassandraAdapter = require('./cassandra/CassandraAdapter')
  * 
  * @returns {DatabaseAdapter} 返回对应类型的数据库适配器实例
  */
-function createAdapter (type, ...args) {
+function MyDatabaseAdapter (type, ...args) {
   switch (type) {
     case 'mongodb':
       return new MongoDBAdapter(...args)
@@ -37,4 +37,4 @@ function createAdapter (type, ...args) {
   }
 }
 
-export { DatabaseAdapter, createAdapter as MyDatabaseAdapter }
+module.exports = { DatabaseAdapter, MyDatabaseAdapter }

@@ -29,4 +29,4 @@ class RedisAdapter extends DatabaseAdapter {
   }
 }
 
-export default RedisAdapter
+module.exports = RedisAdapter

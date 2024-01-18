@@ -1,7 +1,6 @@
 // createDatabaseAdapter.js
 const { MongoClient } = require('mongodb')
-const { MyDatabaseAdapter } = require('./MyDatabaseAdapter')
-
+const { MyDatabaseAdapter } = require('./db/AdapterFactory')
 /**
  * 根据传入的数据库类型，从环境变量中读取数据库配置，并返回
  * @param dbType 数据库类型
