@@ -1,8 +1,9 @@
 const MongoClient = require('mongodb').MongoClient
 
-// 库名称和集合名称。
+// 库名称和集合名称。需要提前创建。
 const demoDb = "test"
 const demoColl = "testColl"
+
 
 // 建议使用副本集高可用地址，确保高可用。
 // 确保执行代码的服务器和MongoDB实例网络是连通的。
