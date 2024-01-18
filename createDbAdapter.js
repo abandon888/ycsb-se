@@ -32,18 +32,18 @@ function getDbConfig (dbType) {
 
 async function createDatabaseAdapter (event) {
   const { dbType } = event
-  let adapter, dbConnectionTime
+  let adapter, dbConnectionTime, mongoClient = null
   const dbConfig = getDbConfig(dbType)
 
   switch (dbType) {
     case 'mongodb':
-      const mongoClient = new MongoClient(dbConfig.uri)
+      mongoClient = new MongoClient(dbConfig.uri)
       const dbConnectStartTime = Date.now()
       await mongoClient.connect()
       dbConnectionTime = Date.now() - dbConnectStartTime
 
       const db = mongoClient.db(dbConfig.dbName)
-      adapter = new MyDatabaseAdapter(db, dbConfig.collectionName)
+      adapter = new MyDatabaseAdapter(dbType, db, dbConfig.collectionName)
       break
     // 其他数据库类型的处理逻辑
     case 'redis':
@@ -56,8 +56,13 @@ async function createDatabaseAdapter (event) {
   return {
     adapter,
     dbConnectionTime,
-    closeConnection: () => mongoClient?.close()
+    closeConnection: async () => {
+      if (mongoClient) {
+        await mongoClient.close()
+      }
+    }
   }
 }
+
 
 module.exports = createDatabaseAdapter

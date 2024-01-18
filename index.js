@@ -1,6 +1,6 @@
 const createDatabaseAdapter = require('./createDbAdapter')
-const WorkloadGenerator = require('./workloadGen')
-const PerformanceEvaluator = require('./performance')
+const { WorkloadGenerator } = require('./workloadGen')
+const { PerformanceEvaluator } = require('./performance')
 const Workloads = require('./workloadconf')
 
 /**
@@ -10,7 +10,9 @@ const Workloads = require('./workloadconf')
  *  - event.workloadType 负载类型
  * @returns {Promise<{coldStartDuration: string, dbConnectionTime: string, totalFunctionExecutionTime: string, performanceReport: *}>}
  */
-async function main (event, context) {
+async function main (events, context, callback) {
+    let event = JSON.parse(events.toString())
+    console.log(event)
     const functionStartTime = Date.now()
     const { adapter, dbConnectionTime, closeConnection } = await createDatabaseAdapter(event)
     try {
@@ -29,12 +31,14 @@ async function main (event, context) {
         const functionEndTime = Date.now()
         const totalFunctionExecutionTime = functionEndTime - functionStartTime
 
-        return {
-            coldStartDuration: `${functionStartTime - context.initialStartTime}ms`,
-            dbConnectionTime: `${dbConnectionTime}ms`,
-            totalFunctionExecutionTime: `${totalFunctionExecutionTime}ms`,
-            performanceReport: report
-        }
+        callback(null,
+            {
+                coldStartDuration: `${functionStartTime - context.initialStartTime}ms`,
+                dbConnectionTime: `${dbConnectionTime}ms`,
+                totalFunctionExecutionTime: `${totalFunctionExecutionTime}ms`,
+                performanceReport: report
+            })
+
     } catch (error) {
         console.error('Error during database operation:', error)
         throw error
