@@ -22,6 +22,18 @@ class MongoDBAdapter extends DatabaseAdapter {
     const collection = this.db.collection(this.collectionName)
     await collection.updateOne({ _id: key }, { $set: { value: value } })
   }
+
+  //初始化，使用test数据库，创建testColl集合
+  async init () {
+    const collection = this.db.collection(this.collectionName)
+    await collection.drop()
+    await collection.insertOne({ _id: 'test', value: 'test' })
+  }
+
+  async cleanup () {
+    const collection = this.db.collection(this.collectionName)
+    await collection.drop()
+  }
 }
 
 module.exports = MongoDBAdapter
