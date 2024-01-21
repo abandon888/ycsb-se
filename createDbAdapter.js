@@ -44,6 +44,7 @@ async function createDatabaseAdapter (event) {
 
       const db = mongoClient.db(dbConfig.dbName)
       adapter = new MyDatabaseAdapter(dbType, db, dbConfig.collectionName)
+      await adapter.init()
       break
     // 其他数据库类型的处理逻辑
     case 'redis':
